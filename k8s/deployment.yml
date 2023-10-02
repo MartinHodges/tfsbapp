@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tfsbapp
+  name: tfsbapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tfsbapp
+  template:
+    metadata:
+      labels:
+        app: tfsbapp
+    spec:
+      containers:
+        - name: tfsbapp
+          image: <github username>/tfsbapp:latest
+          ports:
+            - containerPort: 9091
+            imagePullPolicy: Always
+          env:
+            - name: DB_HOST
+              value: postgres-postgresql.postgres.svc.cluster.local
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-user-pass
+                  key: username
+            - name: DB_PW
+              valueFrom:
+                secretKeyRef:
+                  name: db-user-pass
+                  key: password
+      imagePullSecrets:
+        - name: my-registry-secret

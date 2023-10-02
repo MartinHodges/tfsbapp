@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tfsbapp
+  labels:
+    app: tfsbapp
+spec:
+  type: NodePort
+  ports:
+    - port: 9091
+      targetPort: 9091
+      protocol: TCP
+      nodePort: 30091
+  externalIPs:
+    - 103.4.235.252
+  selector:
+    app: tfsbapp
