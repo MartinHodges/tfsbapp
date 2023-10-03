@@ -55,7 +55,7 @@ jobs:
       - name: Fetch k8s repo
         uses: actions/checkout@v3
         with:
-          repository: ${USERNAME_GITHUB}/tfsbapp
+          repository: ${{ vars.USERNAME_GITHUB }}/tfsbapp
           ref: main
           token: ${{secrets.my_pat}}
 
@@ -70,7 +70,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.my_pat }}
         with:
           source-directory: '.'
-          destination-github-username: ${USERNAME_GITHUB}
+          destination-github-username: ${{ vars.USERNAME_GITHUB }}
           destination-repository-name: 'tfsbapp-k8s'
-          user-email: ${EMAIL}
+          user-email: ${{ vars.EMAIL }}
           target-branch: main
