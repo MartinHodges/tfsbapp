@@ -67,11 +67,11 @@ jobs:
 
       - name: Push to deployment repo
         uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.my_pat }}
         with:
           source-directory: '.'
           destination-github-username: ${{ vars.USERNAME_GITHUB }}
           destination-repository-name: 'tfsbapp-k8s'
           user-email: ${{ vars.EMAIL }}
           target-branch: main
+          github-server: https://github.com
+          token: ${{ secrets.my_pat }}
