@@ -53,11 +53,12 @@ jobs:
           cp k8s/* /tmp/k8s
 
       - name: Fetch k8s repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ vars.USERNAME_GITHUB }}/tfsbapp
           ref: main
           token: ${{secrets.my_pat}}
+          github-server-url: https://github.com
 
       - name: Update
         run: |
