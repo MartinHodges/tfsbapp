@@ -75,5 +75,3 @@ jobs:
           destination-repository-name: 'tfsbapp-k8s'
           user-email: ${{ vars.EMAIL }}
           target-branch: main
-          github-server: https://github.com
-          token: ${{ secrets.my_pat }}
