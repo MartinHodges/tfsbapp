@@ -55,7 +55,7 @@ jobs:
       - name: Fetch k8s repo
         uses: actions/checkout@v4
         with:
-          repository: ${{ vars.USERNAME_GITHUB }}/tfsbapp
+          repository: ${{ vars.USERNAME_GITHUB }}/tfsbapp-k8s
           ref: main
           token: ${{secrets.my_pat}}
 
