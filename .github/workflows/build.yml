@@ -68,7 +68,7 @@ jobs:
         run: |
           git config --global user.name ${{ vars.USERNAME_GITHUB }}
           git config --global user.email ${{ vars.EMAIL }}
-          git remote set-url origin https://x-access-token:${{ secrets.my_pat }}@github.com/tfsbapp-k8s.git
+          git remote set-url origin https://x-access-token:${{ secrets.my_pat }}@github.com/${{ vars.USERNAME_GITHUB }}/tfsbapp-k8s.git
           git add .
           git commit -am "Build ${{github.run_number}}"
           git push
