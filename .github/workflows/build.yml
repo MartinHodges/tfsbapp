@@ -61,8 +61,8 @@ jobs:
 
       - name: Update
         run: |
-          mkdir -p core
-          cp /tmp/k8s/* core
+          mkdir -p tfsbapp
+          cp /tmp/k8s/* tfsbapp
 
       - name: Push to deployment repo
         run: |
