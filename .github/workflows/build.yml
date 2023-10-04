@@ -58,7 +58,6 @@ jobs:
           repository: ${{ vars.USERNAME_GITHUB }}/tfsbapp
           ref: main
           token: ${{secrets.my_pat}}
-          github-server-url: https://github.com
 
       - name: Update
         run: |
@@ -66,12 +65,11 @@ jobs:
           cp /tmp/k8s/* core
 
       - name: Push to deployment repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.my_pat }}
-        with:
-          source-directory: '.'
-          destination-github-username: ${{ vars.USERNAME_GITHUB }}
-          destination-repository-name: 'tfsbapp-k8s'
-          user-email: ${{ vars.EMAIL }}
-          target-branch: main
+        run: |
+          git config --global user.name ${{ vars.USERNAME_GITHUB }}
+          git config --global user.email ${{ vars.EMAIL }}
+          git remote set-url origin https://x-access-token:${{ secrets.my_pat }}@github.com/tfsbapp-k8s
+          git add .
+          git commit -am "Build ${{github.run_number}}"
+          git push
+
