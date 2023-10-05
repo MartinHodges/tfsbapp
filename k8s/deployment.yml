@@ -19,7 +19,7 @@ spec:
           image: MartinHodges/tfsbapp:latest
           ports:
             - containerPort: 9091
-            imagePullPolicy: IfNotPresent
+          imagePullPolicy: IfNotPresent
           env:
             - name: DB_HOST
               value: postgres-postgresql.postgres.svc.cluster.local
