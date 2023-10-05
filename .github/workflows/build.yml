@@ -67,8 +67,8 @@ jobs:
       - name: Update version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "image: MartinHodges/tfsbapp:.*"
-          replace: "image: MartinHodges/tfsbapp:${{github.run_number}}"
+          find: "image: martinhodges/tfsbapp:.*"
+          replace: "image: martinhodges/tfsbapp:${{github.run_number}}"
           include: "tfsbapp/deployment.yml"
 
       - name: Push to deployment repo
