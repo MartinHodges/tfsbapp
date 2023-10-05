@@ -64,6 +64,13 @@ jobs:
           mkdir -p tfsbapp
           cp /tmp/k8s/* tfsbapp
 
+      - name: Update version
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "image: MartinHodges/tfsbapp:.*"
+          replace: "image: MartinHodges/tfsbapp:${{github.run_number}}"
+          include: "tfsbapp/deployment.yml"
+
       - name: Push to deployment repo
         run: |
           git config --global user.name ${{ vars.USERNAME_GITHUB }}

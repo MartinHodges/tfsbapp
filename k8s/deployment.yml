@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: tfsbapp
-          image: <github username>/tfsbapp:latest
+          image: MartinHodges/tfsbapp:latest
           ports:
             - containerPort: 9091
-            imagePullPolicy: Always
+            imagePullPolicy: IfNotPresent
           env:
             - name: DB_HOST
               value: postgres-postgresql.postgres.svc.cluster.local
